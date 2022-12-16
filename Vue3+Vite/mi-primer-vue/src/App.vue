@@ -1,48 +1,83 @@
+
+<!-- 
+  Hacer un boton que crea un array en el cual agreguemos los numeros que nos salen con los botones
+  El boton de agregar numero se tiene que bloquear si el numero ya esta agregado al array
+-->
 <script setup>
-import { ref } from "vue";
-const name = 'vue dinámico';
-
-/* Con afn PUEDES HACER UN ARROW FUNCTION EN AUTOMATICO  (first) => { second } */
-
+import { ref, computed } from "vue";
+const name = 'Checo';
+const arrayNumerico = ref([]);
 const count = ref(0);
+
 const aumentarContador = () => {
+  habilitarFun();
   count.value++;
 }
 const reducirContador = () => {
+  habilitarFun();
   count.value--;
 }
-const contadorAlCuadrado = () => {
-  count.value *= count.value;
-}
 const reiniciarContador = () => {
+  habilitarFun();
   count.value = 0;
 }
+
+const colorClass = computed(() => {
+  if (count.value > 0) {
+    return 'positive'
+  }
+  if (count.value < 0) {
+    return 'negative'
+  }
+  if (count.value === 0) {
+    return 'zero'
+  }
+})
+const habilitarFun = () => {
+  if (arrayNumerico.value.find(count.value)) {
+    return true;
+  }else{
+    return false;
+  }
+}
+
+const agregarElemento = () => {
+  habilitarFun();
+  arrayNumerico.value.push(count.value);
+}
+
 </script>
 
 <template>
-  <h1>Hola {{ name.toUpperCase() }}</h1>
-  <!-- Si el contador es mayor que 0 se pinta de verde, caso contrario de pinta de rojo -->
-  <!-- Se manda a llamar a la funcion que devuelve la clase equivalente al valor del count -->
-  <h2 :class="count >= 0 ? 'positive' : 'negative'">
+  <h1>Practica de {{ name.toUpperCase() }} para un contador y un array</h1>
+  <h2 :class="colorClass">
     {{ count }}
   </h2>
-  <button v-on:click="aumentarContador()">
+  <button class="btn btn-primary" v-on:click="aumentarContador()">
     Aumentar contador
   </button>
-  <button v-on:click="reducirContador()">
-    Reducir contador
+  <button class="btn btn-primary" v-on:click="reducirContador()">
+    Reducir
   </button>
-  <button v-on:click="contadorAlCuadrado()">
-    Contador al cuadrado
-  </button>
-  <button v-on:click="reiniciarContador()">
+  <button class="btn btn-secondary" v-on:click="reiniciarContador()">
     Reiniciar el contador
   </button>
+  <button class="btn btn-success" :disabled="habilitarFun()" v-on:click="agregarElemento()">
+    Agregar numero
+  </button>
+
+  <ul>
+    ARRAY DE NUMEROS:
+    <li v-for="(element) in arrayNumerico">
+      {{ element }}
+    </li>
+  </ul>
+
 </template>
 
 <style>
 h1 {
-  color: blue;
+  color: aquamarine;
 }
 
 .negative {
@@ -51,5 +86,9 @@ h1 {
 
 .positive {
   color: green;
+}
+
+.zero {
+  color: peru
 }
 </style>
