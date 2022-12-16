@@ -1,14 +1,17 @@
 <script setup>
-
+import { ref } from "vue";
 const name = 'vue dinámico';
 
-let count = 0;
+const count = ref(0);
 const aumentarContador = () => {
-  console.log('aumentar contador');
-  count++;
-  console.log(count);
+  count.value++;
 }
-
+const reducirContador = () => {
+  count.value--;
+}
+const contadorAlCuadrado = () => {
+  count.value *= count.value;
+}
 </script>
 
 <template>
@@ -19,6 +22,12 @@ const aumentarContador = () => {
   </p>
   <button v-on:click="aumentarContador()">
     Aumentar contador
+  </button>
+  <button v-on:click="reducirContador()">
+    Reducir contador
+  </button>
+  <button v-on:click="contadorAlCuadrado()">
+    Contador al cuadrado
   </button>
 </template>
 
