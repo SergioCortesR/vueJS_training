@@ -34,9 +34,9 @@ const colorClass = computed(() => {
   }
 })
 const habilitarFun = () => {
-  if (arrayNumerico.value.find(count.value)) {
+  if (arrayNumerico.value.includes(count.value)) {
     return true;
-  }else{
+  } else {
     return false;
   }
 }
@@ -67,7 +67,7 @@ const agregarElemento = () => {
   </button>
 
   <ul>
-    ARRAY DE NUMEROS:
+    ARRAY DE NUMEROS FAVORITOS:
     <li v-for="(element) in arrayNumerico">
       {{ element }}
     </li>
