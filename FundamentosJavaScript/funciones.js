@@ -11,4 +11,8 @@ const sumar2 = (n1,n2) => {
 
 const regresaString = () => "Hola mundo!"
 
+function cuadradoDeUnNumero(numero) {
+    return numero*numero;
+}
+
 sumar2(7,5);
