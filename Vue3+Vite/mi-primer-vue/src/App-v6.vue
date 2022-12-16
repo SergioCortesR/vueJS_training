@@ -6,7 +6,7 @@ const name = 'vue dinámico';
 
 const count = ref(0);
 const aumentarContador = () => {
-  count.value++;
+  count.value++; 
 }
 const reducirContador = () => {
   count.value--;
@@ -22,10 +22,19 @@ const reiniciarContador = () => {
 <template>
   <h1>Hola {{ name.toUpperCase() }}</h1>
   <!-- Si el contador es mayor que 0 se pinta de verde, caso contrario de pinta de rojo -->
-  <!-- Se manda a llamar a la funcion que devuelve la clase equivalente al valor del count -->
-  <h2 :class="count >= 0 ? 'positive' : 'negative'">
+  <!-- Se usan v/if y else para calificar si se usa una etiqueta u otra -->
+  <h1 v-if="count > 0" style="color: green;">
     {{ count }}
-  </h2>
+  </h1>
+  <h1 v-else style="color: red;">
+    {{ count }}
+  </h1>
+
+  <!-- Una mejor forma de resolver los colores -->
+
+  <h2 :class="count >= 0 ? 'positive' : 'negative'">
+        {{ count }}
+    </h2>
   <button v-on:click="aumentarContador()">
     Aumentar contador
   </button>
@@ -44,12 +53,12 @@ const reiniciarContador = () => {
 h1 {
   color: blue;
 }
-
 .negative {
-  color: red;
+    color: red;
 }
 
 .positive {
-  color: green;
+    color: green;
 }
+
 </style>
