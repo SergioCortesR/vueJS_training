@@ -9,7 +9,7 @@ import Counter from "./components/BtnCounter.vue";
 /* La emision de eventos sirve para hacer algo en un componente y este se refleje en el componente padre */
 const miArray = ref([
     { id: 1, title: "Post 1", cont: "Contenido 1", miestilo: "success" },
-    { id: 2, title: "Post 2", cont: "Contenido 2", miestilo: "secondary" },
+    { id: 2, title: "Post 2", cont: "Contenido 2", miestilo: "danger" },
     { id: 3, title: "Post 3", miestilo: "primary" },
 ]);
 
