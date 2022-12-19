@@ -10,15 +10,12 @@ const arrayNumerico = ref([]);
 const count = ref(0);
 
 const aumentarContador = () => {
-  habilitarFun();
   count.value++;
 }
 const reducirContador = () => {
-  habilitarFun();
   count.value--;
 }
 const reiniciarContador = () => {
-  habilitarFun();
   count.value = 0;
 }
 
@@ -42,37 +39,42 @@ const habilitarFun = () => {
 }
 
 const agregarElemento = () => {
-  habilitarFun();
   arrayNumerico.value.push(count.value);
 }
 
 </script>
 
 <template>
-  <h1>Practica de {{ name.toUpperCase() }} para un contador y un array</h1>
-  <h2 :class="colorClass">
-    {{ count }}
-  </h2>
-  <button class="btn btn-primary" v-on:click="aumentarContador()">
-    Aumentar contador
-  </button>
-  <button class="btn btn-primary" v-on:click="reducirContador()">
-    Reducir
-  </button>
-  <button class="btn btn-secondary" v-on:click="reiniciarContador()">
-    Reiniciar el contador
-  </button>
-  <button class="btn btn-success" :disabled="habilitarFun()" v-on:click="agregarElemento()">
-    Agregar numero
-  </button>
+  <div class="container text-center mt3">
 
-  <ul>
-    ARRAY DE NUMEROS FAVORITOS:
-    <li v-for="(element) in arrayNumerico">
-      {{ element }}
-    </li>
-  </ul>
+    <h1>Practica de {{ name.toUpperCase() }} para un contador y un array</h1>
+    <h2 :class="colorClass">
+      {{ count }}
+    </h2>
+    <div class="btn-group">
+      <button class="btn btn-primary" v-on:click="aumentarContador()">
+        Aumentar contador
+      </button>
+      <button class="btn btn-primary" v-on:click="reducirContador()">
+        Reducir
+      </button>
+      <button class="btn btn-secondary" v-on:click="reiniciarContador()">
+        Reiniciar el contador
+      </button>
+      <button class="btn btn-success" :disabled="habilitarFun()" v-on:click="agregarElemento()">
+        Agregar numero
+      </button>
+    </div>
 
+    <ul class="list-group"> 
+      ARRAY DE NUMEROS FAVORITOS:
+      <li 
+      class="list-group-item"
+      v-for="(element) in arrayNumerico">
+        {{ element }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <style>
