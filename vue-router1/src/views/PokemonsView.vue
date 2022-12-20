@@ -1,31 +1,19 @@
 <script setup>
-import { ref } from "vue";
-import axios from 'axios';
 import { RouterLink } from "vue-router";
+import { useGetData } from "@/composables/getData";
 
-const pokemons = ref([]);
+const {data,getData} = useGetData();
 
-const getData = async () => {
-    try {
-        //Destructuracion del resultado
-        const { data } = await axios.get('https://pokeapi.co/api/v2/pokemon');
-        //console.log(data.results);
-        pokemons.value = data.results;
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-getData();
+getData('https://pokeapi.co/api/v2/pokemon');
 
 </script>
 <template>
     <h1>Pokemones buenisimos</h1>
 
-    <p v-for="element in pokemons">
+    <p v-for="pokemon in data.results">
         <!-- Redireccionar a vista con uso de variables del v-bind -->
-        <RouterLink :to="`/pokemons/${element.name}`">
-            {{ element.name }}
+        <RouterLink :to="`/pokemons/${pokemon.name}`">
+            {{ pokemon.name }}
         </RouterLink>
     </p>
 </template>
