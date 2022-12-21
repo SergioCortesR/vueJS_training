@@ -12,8 +12,12 @@ import HelloWorld from './components/HelloWorld.vue';
       <HelloWorld msg="You did it!" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/">New counter</RouterLink>
+        <RouterLink to="/about">Middle couunter</RouterLink>
+        <RouterLink to="/old-counter">Old counter</RouterLink>
+        <RouterLink to="/contador-hook">Contador con Hooks</RouterLink>
+        <RouterLink to="/paises">Lista de paises</RouterLink>
+
       </nav>
     </div>
   </header>
